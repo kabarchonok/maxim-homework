@@ -1,0 +1,17 @@
+[
+  {
+    "code": "field1",
+    "caption": "поле 1",
+    "type": "number"
+  },
+  {
+    "code": "field2",
+    "caption": "поле 3",
+    "type": "string"
+  },
+  {
+    "code": "field4",
+    "caption": "поле 4",
+    "type": "bool"
+  }
+]
