@@ -4,8 +4,9 @@
 </div>
 </template>
 
-<script>
+<script lang="ts">
 import VFilter from '../components/VFilter'
+import FIELDS_FIXTURE from '@/fixtures/fields.json'
 
 import { Vue, Component } from 'vue-property-decorator'
 
@@ -15,23 +16,7 @@ import { Vue, Component } from 'vue-property-decorator'
   },
   data () {
     return {
-      fields: [
-        {
-          code: 'field1',
-          caption: 'поле 1',
-          type: 'number'
-        },
-        {
-          code: 'field2',
-          caption: 'поле 3',
-          type: 'string'
-        },
-        {
-          code: 'field4',
-          caption: 'поле 4',
-          type: 'bool'
-        }
-      ]
+      fields: FIELDS_FIXTURE
 
     }
   }
