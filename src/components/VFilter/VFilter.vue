@@ -1,17 +1,17 @@
 <template>
-<div>
+<VForm>
   <VFilterField
     v-for="field in fields"
     :key="field.code"
-    v-bind="field"
+    :field="field"
   />
-</div>
+</VForm>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import VFilterField from './VFilterField.vue'
-import Field from './type'
+import { Field } from './types'
 
 @Component({
   components: {
