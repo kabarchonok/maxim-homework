@@ -1,17 +1,27 @@
 [
   {
     "code": "field1",
-    "caption": "поле 1",
-    "type": "number"
+    "caption": "Числовое поле",
+    "type": "number",
+    "value": {
+      "qte": 5,
+      "lte": 20,
+    }
   },
   {
     "code": "field2",
-    "caption": "поле 3",
-    "type": "string"
+    "caption": "Текстовое поле",
+    "type": "string",
+    "value": {
+      "neq": "hello"
+    }
   },
   {
     "code": "field4",
-    "caption": "поле 4",
-    "type": "bool"
+    "caption": "Логическое поле",
+    "type": "bool",
+    "value": {
+      "eq": true
+    }
   }
 ]
