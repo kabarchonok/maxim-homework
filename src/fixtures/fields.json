@@ -5,7 +5,7 @@
     "type": "number",
     "value": {
       "qte": 5,
-      "lte": 20,
+      "lte": 20
     }
   },
   {
