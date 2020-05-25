@@ -1,11 +1,17 @@
 <template>
-<div>
-  <VFilter :fields="fields"/>
-</div>
+<VCard class="Form">
+  <VCardTitle>
+    <h1 class="title">Форма</h1>
+  </VCardTitle>
+
+  <VCardText>
+    <VFilter :fields="fields"/>
+  </VCardText>
+</VCard>
 </template>
 
 <script lang="ts">
-import VFilter from '../components/VFilter'
+import VFilter from '@/components/VFilter'
 import FIELDS_FIXTURE from '@/fixtures/fields.json'
 
 import { Vue, Component } from 'vue-property-decorator'
@@ -21,6 +27,12 @@ import { Vue, Component } from 'vue-property-decorator'
     }
   }
 })
-export default class FormView extends Vue {
-}
+export default class FormView extends Vue {}
 </script>
+
+<style scoped>
+.Form {
+  max-width: 800px;
+  margin: auto;
+}
+</style>
