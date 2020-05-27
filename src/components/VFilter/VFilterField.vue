@@ -7,7 +7,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import VFilterStringField from './VFilterStringField.vue'
 import VFilterNumberField from './VFilterNumberField.vue'
 import VFilterBooleanField from './VFilterBooleanField.vue'
-import { Field } from './types'
+import { Field } from '@/utils/types'
 
 @Component({
   components: {
@@ -28,6 +28,8 @@ export default class VFilterField extends Vue {
         return 'VFilterNumberField'
       case 'bool':
         return 'VFilterBooleanField'
+      default:
+        return 'VFilterStringField'
     }
   }
 }

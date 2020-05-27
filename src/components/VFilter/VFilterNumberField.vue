@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { NumberField } from './types'
+import { NumberField } from '@/utils/types'
 
 @Component
 export default class VFilterNumberField extends Vue {

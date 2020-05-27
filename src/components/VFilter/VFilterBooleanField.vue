@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { BooleanField } from './types'
+import { BooleanField } from '@/utils/types'
 
 @Component
 export default class VFilterField extends Vue {

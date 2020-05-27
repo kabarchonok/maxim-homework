@@ -11,7 +11,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import VFilterField from './VFilterField.vue'
-import { Field } from './types'
+import { Field } from '@/utils/types'
 
 @Component({
   components: {
