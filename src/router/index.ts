@@ -13,7 +13,12 @@ const routes: Array<RouteConfig> = [
   {
     path: '/form',
     name: 'Form',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Form.vue')
+    component: () => import(/* webpackChunkName: "form" */ '../views/Form.vue')
+  },
+  {
+    path: '/edit',
+    name: 'Edit',
+    component: () => import(/* webpackChunkName: "create" */ '../views/Edit.vue')
   }
 ]
 
