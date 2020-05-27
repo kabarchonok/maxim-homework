@@ -57,21 +57,20 @@ export default class VFormBuilderModal extends Vue {
     return this.mutableField
   }
 
+  formValid = false
+  mutableField: Field = JSON.parse(JSON.stringify(this.field))
+  isFormUpdate = false
+  fieldTypes = fieldTypes
+
   submit () {
     if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
       this.saveField()
-      this.closeDialog();
-      (this.$refs.form as Vue & { reset: () => boolean }).reset()
+      this.closeDialog()
     }
   }
 
   resetValidation () {
     (this.$refs.form as Vue & { resetValidation: () => boolean }).resetValidation()
   }
-
-  formValid = false
-  mutableField: Field = this.field
-  isFormUpdate = false
-  fieldTypes = fieldTypes
 }
 </script>
