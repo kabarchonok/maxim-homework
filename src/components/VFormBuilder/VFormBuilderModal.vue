@@ -3,12 +3,12 @@
     <VCardTitle>Редактировать поле</VCardTitle>
 
     <VCardText>
-      <VForm ref="form">
+      <VForm ref="form" v-model="formValid" lazy-validation>
         <VSelect
           label="Тип"
           :items="fieldTypes"
           v-model="mutableField.type"
-          :rules="[v => !!v || 'Name is required']"
+          :rules="[v => !!v || 'Обязательное поле']"
         />
         <VTextField
           label="Имя"
@@ -21,7 +21,7 @@
     <VCardActions>
       <VSpacer/>
       <VBtn color="blue darken-1" text @click="closeDialog">Закрыть</VBtn>
-      <VBtn color="blue darken-1" text @click="saveField">Сохранить</VBtn>
+      <VBtn color="blue darken-1" text @click="submit" :disabled="!formValid">Сохранить</VBtn>
     </VCardActions>
   </VCard>
 </template>
@@ -38,11 +38,15 @@ export default class VFormBuilderModal extends Vue {
 
   @Watch('field', { deep: true })
   onFieldChanged (val: Field) {
-    if (!this.isFormUpdate) this.mutableField = JSON.parse(JSON.stringify(val))
+    if (!this.isFormUpdate) {
+      this.mutableField = JSON.parse(JSON.stringify(val))
+      this.resetValidation()
+    }
   }
 
   @Emit()
   closeDialog () {
+    this.resetValidation()
     this.isFormUpdate = false
     return false
   }
@@ -53,6 +57,19 @@ export default class VFormBuilderModal extends Vue {
     return this.mutableField
   }
 
+  submit () {
+    if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
+      this.saveField()
+      this.closeDialog();
+      (this.$refs.form as Vue & { reset: () => boolean }).reset()
+    }
+  }
+
+  resetValidation () {
+    (this.$refs.form as Vue & { resetValidation: () => boolean }).resetValidation()
+  }
+
+  formValid = false
   mutableField: Field = this.field
   isFormUpdate = false
   fieldTypes = fieldTypes
