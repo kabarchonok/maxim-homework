@@ -1,7 +1,7 @@
-interface CommonField {
+export interface CommonField {
   code: string
   caption: string
-  type: 'number' | 'string' | 'bool'
+  type: string //FIXME: 'number' | 'string' | 'bool'
   value?: object
 }
 
