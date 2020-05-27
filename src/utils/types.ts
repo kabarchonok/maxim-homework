@@ -1,5 +1,5 @@
 export interface CommonField {
-  code?: string
+  code: string
   caption: string
   type: string //FIXME: 'number' | 'string' | 'bool'
   value?: object
