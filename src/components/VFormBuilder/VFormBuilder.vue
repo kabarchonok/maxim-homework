@@ -17,8 +17,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import FIELDS_FIXTURE from '@/fixtures/fields.json'
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
 import VFormBuilderFields from '@/components/VFormBuilder/VFormBuilderFields.vue'
 import VFormBuilderModal from '@/components/VFormBuilder/VFormBuilderModal.vue'
 import { Field } from '@/utils/types'
@@ -27,7 +26,13 @@ import { Field } from '@/utils/types'
   components: { VFormBuilderModal, VFormBuilderFields }
 })
 export default class VFormBuilder extends Vue {
-  fields: Field[] = FIELDS_FIXTURE
+  @Prop({ required: true })
+  public fields!: Field[]
+
+  @Emit()
+  saveField (field: Field) {
+    return field
+  }
 
   dialog = {
     active: false,
@@ -42,21 +47,12 @@ export default class VFormBuilder extends Vue {
 
   closeDialog (): void {
     this.dialog.active = false
-    this.dialog.field = {}
   }
 
   editItem (code: string): void {
     const field = this.fields.find(i => i.code === code)
 
     this.openDialog(field)
-  }
-
-  saveField (field: Field): void {
-    const foundIndex = this.fields.findIndex(i => i.code === field.code)
-
-    this.fields[foundIndex] = field
-
-    this.closeDialog()
   }
 }
 </script>
