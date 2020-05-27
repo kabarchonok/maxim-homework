@@ -5,8 +5,8 @@
 </template>
 
 <script>
+import { Vue, Component } from 'vue-property-decorator'
 
-export default {
-  name: 'Home'
-}
+@Component
+export default class HomeView extends Vue {}
 </script>
