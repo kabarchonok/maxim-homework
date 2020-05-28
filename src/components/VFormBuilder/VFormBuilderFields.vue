@@ -8,6 +8,12 @@
     hide-default-footer
     item-key="code"
   >
+    <template v-slot:item.data-table-expand="{ item, expand, isExpanded }">
+     <VBtn v-if="item.value" icon @click="expand(isExpanded ? null : item)">
+       <VIcon>{{ isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</VIcon>
+     </VBtn>
+    </template>
+
     <template v-slot:item.type="{ item: { type } }">
       {{ fieldTypesObj[type]}}
     </template>
