@@ -3,10 +3,12 @@ import { CommonField } from '@/utils/types'
 import FIELDS_FIXTURE from '@/fixtures/fields.json'
 
 interface Interface {
+  counter: number;
   fields: CommonField[];
 }
 
 export const state: Interface = {
+  counter: FIELDS_FIXTURE.length,
   fields: FIELDS_FIXTURE
 }
 
@@ -14,10 +16,7 @@ export const actions = {}
 
 export const mutations = {
   createField (state: Interface, field: CommonField) {
-    let [lastCode]: any = state.fields[state.fields.length - 1].code.match(/\d+/)
-    if (!lastCode) return
-
-    field.code = `field${++lastCode}`
+    field.code = `field${++state.counter}`
 
     state.fields.push(field)
   },
