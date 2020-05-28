@@ -4,17 +4,26 @@
 
     <VCardText>
       <VForm ref="form" v-model="formValid" lazy-validation>
-        <VSelect
-          label="Тип"
-          :items="fieldTypes"
-          v-model="mutableField.type"
-          :rules="[v => !!v || 'Обязательное поле']"
-        />
-        <VTextField
-          label="Имя"
-          v-model="mutableField.caption"
-          :rules="[v => !!v || 'Обязательное поле']"
-        />
+        <VContainer grid-list-xl>
+          <VLayout>
+            <VFlex md6>
+              <VSelect
+                label="Тип"
+                :items="fieldTypes"
+                v-model="mutableField.type"
+                :rules="[v => !!v || 'Обязательное поле']"
+              />
+            </VFlex>
+            <VFlex md6>
+              <VTextField
+                label="Имя"
+                v-model="mutableField.caption"
+                :rules="[v => !!v || 'Обязательное поле']"
+              />
+            </VFlex>
+          </VLayout>
+        </VContainer>
+        <VFormBuilderModalRules :type="mutableField.type" :rules.sync="mutableField.value" />
       </VForm>
     </VCardText>
 
@@ -28,10 +37,15 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator'
+import VFormBuilderModalRules from './VFormBuilderModalRules.vue'
 import { Field } from '@/utils/types'
 import { fieldTypes } from '@/utils/fieldHelper'
 
-@Component
+@Component({
+  components: {
+    VFormBuilderModalRules
+  }
+})
 export default class VFormBuilderModal extends Vue {
   @Prop({ required: true })
   field!: Field
