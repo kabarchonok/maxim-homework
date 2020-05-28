@@ -7,7 +7,7 @@
       <div class="overline pl-4 pt-3">
         Добавить правило
       </div>
-      <VForm>
+      <VForm @submit.prevent="addRule">
         <VContainer grid-list-xl>
           <VLayout align-baseline>
             <VFlex md4>
@@ -43,7 +43,6 @@
                 light
                 block
                 type="submit"
-                @click="addRule"
               >
                 Добавить
               </VBtn>
