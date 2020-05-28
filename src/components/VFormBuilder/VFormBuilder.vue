@@ -6,7 +6,7 @@
     </VCardTitle>
 
     <VCardText>
-      <VFormBuilderFields :fields="fields" @edit-item="editItem"/>
+      <VFormBuilderFields :fields="fields" @edit-item="editItem" @remove-item="removeField"/>
     </VCardText>
   </VCard>
 
@@ -30,7 +30,12 @@ export default class VFormBuilder extends Vue {
   public fields!: Field[]
 
   @Emit()
-  saveField (field: Field) {
+  saveField (code: string) {
+    return code
+  }
+
+  @Emit()
+  removeField (field: Field) {
     return field
   }
 

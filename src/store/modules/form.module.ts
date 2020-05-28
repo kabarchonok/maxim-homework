@@ -24,6 +24,11 @@ export const mutations = {
     const foundIndex = state.fields.findIndex(i => i.code === field.code)
 
     Vue.set(state.fields, foundIndex, field)
+  },
+  removeField (state: Interface, code: string) {
+    const foundIndex = state.fields.findIndex(i => i.code === code)
+
+    Vue.delete(state.fields, foundIndex)
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <VFormBuilder class="FormBuilder" :fields="fields" @save-field="saveField"/>
+  <VFormBuilder class="FormBuilder" :fields="fields" @save-field="saveField" @remove-field="removeField"/>
 </template>
 
 <script lang="ts">
@@ -19,6 +19,10 @@ export default class EditView extends Vue {
     const action = field.code ? 'form/editField' : 'form/createField'
 
     this.$store.commit(action, field)
+  }
+
+  removeField (code: string) {
+    this.$store.commit('form/removeField', code)
   }
 }
 </script>
