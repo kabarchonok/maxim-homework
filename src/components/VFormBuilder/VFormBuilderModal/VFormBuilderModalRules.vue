@@ -73,7 +73,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, PropSync } from 'vue-property-decorator'
+import { Vue, Component, Prop, PropSync, Watch } from 'vue-property-decorator'
 import { BoolRules, NumberRules, StringRules } from './rules'
 import { fieldRuleLabels } from '@/utils/fieldHelper'
 import { FieldRules } from '@/utils/types'
@@ -85,6 +85,11 @@ export default class VFormBuilderModalRules extends Vue {
 
   @PropSync('rules', { type: Object })
   syncedRules!: FieldRules
+
+  @Watch('type')
+  onTypeChanged () {
+    this.syncedRules = {}
+  }
 
   get ruleSelect () {
     switch (this.type) {
