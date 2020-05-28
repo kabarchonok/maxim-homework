@@ -1,0 +1,131 @@
+<template>
+<div>
+  <VSheet dark color="primary lighten-2">
+    <div class="overline pl-4 pt-3">Добавить правило</div>
+    <VForm>
+      <VContainer grid-list-xl>
+        <VLayout align-baseline>
+          <VFlex md4>
+            <VSelect
+              :disabled="!type"
+              :items="ruleSelect"
+              v-model="selectedRule.type"
+              solo-inverted
+              label="Выберите правило"
+              hide-details
+            />
+          </VFlex>
+          <VFlex md5>
+            <VSelect
+              v-if="type === 'bool'"
+              solo-inverted
+              hide-details
+              :items="boolSelect"
+              v-model="selectedRule.value"
+            />
+            <VTextField
+              v-else
+              :type="type"
+              v-model="selectedRule.value"
+              solo-inverted
+              autocomplete="off"
+              hide-details
+            />
+          </VFlex>
+          <VFlex md3>
+            <VBtn :disabled="isBtnDisabled" light block @click="addRule" type="submit">Добавить</VBtn>
+          </VFlex>
+        </VLayout>
+      </VContainer>
+    </VForm>
+  </VSheet>
+
+  <VDataTable
+    class="VFormBuilderModalRules__table"
+    hide-default-footer
+    :headers="headers"
+    :items="ruleList"
+  >
+    <template v-slot:item.actions="{ item }">
+      <VBtn icon @click="removeRule(item.id)">
+        <VIcon title="Удалить">delete</VIcon>
+      </VBtn>
+    </template>
+  </VDataTable>
+</div>
+</template>
+
+<script lang="ts">
+import { Vue, Component, Prop, PropSync } from 'vue-property-decorator'
+import { BoolRules, NumberRules, StringRules } from './rules'
+import { fieldRuleLabels } from '@/utils/fieldHelper'
+import { FieldRules } from '@/utils/types'
+
+@Component
+export default class VFormBuilderModalRules extends Vue {
+  @Prop()
+  public type!: 'number' | 'string' | 'bool'
+
+  @PropSync('rules', { type: Object })
+  syncedRules!: FieldRules
+
+  get ruleSelect () {
+    switch (this.type) {
+      case 'string':
+        return StringRules
+      case 'number':
+        return NumberRules
+      case 'bool':
+        return BoolRules
+    }
+  }
+
+  get ruleList () {
+    if (!this.syncedRules) return []
+
+    const list = []
+    for (const [key, value] of Object.entries(this.syncedRules)) {
+      list.push({ id: key, name: fieldRuleLabels[key], value: value })
+    }
+    return list
+  }
+
+  get isBtnDisabled () {
+    return !this.selectedRule.type || !this.selectedRule.value
+  }
+
+  boolSelect = [
+    { value: true, text: 'Да' },
+    { value: false, text: 'Нет' }
+  ]
+
+  headers = [
+    { value: 'name', text: 'Имя', sortable: false },
+    { value: 'value', text: 'Значение', sortable: false },
+    { value: 'actions', sortable: false, width: '30px' }
+  ]
+
+  selectedRule = {
+    type: '',
+    value: ''
+  }
+
+  addRule () {
+    Vue.set(this.syncedRules, this.selectedRule.type, this.selectedRule.value)
+    this.selectedRule = { type: '', value: '' }
+  }
+
+  removeRule (type: string) {
+    Vue.delete(this.syncedRules, type)
+  }
+}
+</script>
+
+<style scoped>
+.VFormBuilderModalRules__table {
+  border: 1px solid #E0E0E0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 0;
+}
+</style>
