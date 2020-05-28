@@ -2,7 +2,7 @@
 <div>
   <VCard>
     <VCardTitle>
-      <VBtn class="primary" @click="openDialog">Добавить поле</VBtn>
+      <VBtn class="primary" @click="openDialog(null)">Добавить поле</VBtn>
     </VCardTitle>
 
     <VCardText>
