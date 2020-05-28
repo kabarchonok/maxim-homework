@@ -1,5 +1,10 @@
 <template>
-  <VFormBuilder class="FormBuilder" :fields="fields" @save-field="saveField" @remove-field="removeField"/>
+  <VFormBuilder
+    class="FormBuilder"
+    :fields="fields"
+    @save-field="saveField"
+    @remove-field="removeField"
+  />
 </template>
 
 <script lang="ts">

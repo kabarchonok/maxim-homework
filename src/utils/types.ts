@@ -25,7 +25,7 @@ export interface BooleanFieldRules {
 }
 
 export interface NumberField extends CommonField {
-  value?: NumberFieldRules
+  value?: NumberFieldRules;
 }
 
 export interface StringField extends CommonField {
@@ -33,7 +33,7 @@ export interface StringField extends CommonField {
 }
 
 export interface BooleanField extends CommonField {
-  value?: BooleanFieldRules
+  value?: BooleanFieldRules;
 }
 
 export type Field = NumberField | StringField | BooleanField

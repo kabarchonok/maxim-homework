@@ -1,13 +1,15 @@
 <template>
-<VCard class="Form">
-  <VCardTitle>
-    <h1 class="title">Форма</h1>
-  </VCardTitle>
+  <VCard class="Form">
+    <VCardTitle>
+      <h1 class="title">
+        Форма
+      </h1>
+    </VCardTitle>
 
-  <VCardText>
-    <VFilter :fields="fields"/>
-  </VCardText>
-</VCard>
+    <VCardText>
+      <VFilter :fields="fields" />
+    </VCardText>
+  </VCard>
 </template>
 
 <script lang="ts">

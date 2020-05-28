@@ -1,58 +1,76 @@
 <template>
-<div>
-  <VSheet dark color="primary lighten-2">
-    <div class="overline pl-4 pt-3">Добавить правило</div>
-    <VForm>
-      <VContainer grid-list-xl>
-        <VLayout align-baseline>
-          <VFlex md4>
-            <VSelect
-              :disabled="!type"
-              :items="ruleSelect"
-              v-model="selectedRule.type"
-              solo-inverted
-              label="Выберите правило"
-              hide-details
-            />
-          </VFlex>
-          <VFlex md5>
-            <VSelect
-              v-if="type === 'bool'"
-              solo-inverted
-              hide-details
-              :items="boolSelect"
-              v-model="selectedRule.value"
-            />
-            <VTextField
-              v-else
-              :type="type"
-              v-model="selectedRule.value"
-              solo-inverted
-              autocomplete="off"
-              hide-details
-            />
-          </VFlex>
-          <VFlex md3>
-            <VBtn :disabled="isBtnDisabled" light block @click="addRule" type="submit">Добавить</VBtn>
-          </VFlex>
-        </VLayout>
-      </VContainer>
-    </VForm>
-  </VSheet>
+  <div>
+    <VSheet
+      dark
+      color="primary lighten-2"
+    >
+      <div class="overline pl-4 pt-3">
+        Добавить правило
+      </div>
+      <VForm>
+        <VContainer grid-list-xl>
+          <VLayout align-baseline>
+            <VFlex md4>
+              <VSelect
+                v-model="selectedRule.type"
+                :disabled="!type"
+                :items="ruleSelect"
+                solo-inverted
+                label="Выберите правило"
+                hide-details
+              />
+            </VFlex>
+            <VFlex md5>
+              <VSelect
+                v-if="type === 'bool'"
+                v-model="selectedRule.value"
+                solo-inverted
+                hide-details
+                :items="boolSelect"
+              />
+              <VTextField
+                v-else
+                v-model="selectedRule.value"
+                :type="type"
+                solo-inverted
+                autocomplete="off"
+                hide-details
+              />
+            </VFlex>
+            <VFlex md3>
+              <VBtn
+                :disabled="isBtnDisabled"
+                light
+                block
+                type="submit"
+                @click="addRule"
+              >
+                Добавить
+              </VBtn>
+            </VFlex>
+          </VLayout>
+        </VContainer>
+      </VForm>
+    </VSheet>
 
-  <VDataTable
-    class="VFormBuilderModalRules__table"
-    hide-default-footer
-    :headers="headers"
-    :items="ruleList"
-  >
-    <template v-slot:item.actions="{ item }">
-      <VBtn icon @click="removeRule(item.id)">
-        <VIcon title="Удалить">delete</VIcon>
-      </VBtn>
-    </template>
-  </VDataTable>
-</div>
+    <VDataTable
+      class="VFormBuilderModalRules__table"
+      hide-default-footer
+      :headers="headers"
+      :items="ruleList"
+    >
+      <template v-slot:item.actions="{ item }">
+        <VBtn
+          icon
+          @click="removeRule(item.id)"
+        >
+          <VIcon title="Удалить">
+            delete
+          </VIcon>
+        </VBtn>
+      </template>
+    </VDataTable>
+  </div>
 </template>
 
 <script lang="ts">

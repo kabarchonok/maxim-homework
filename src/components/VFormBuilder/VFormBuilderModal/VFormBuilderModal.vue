@@ -3,34 +3,54 @@
     <VCardTitle>Редактировать поле</VCardTitle>
 
     <VCardText>
-      <VForm ref="form" v-model="formValid" lazy-validation>
+      <VForm
+        ref="form"
+        v-model="formValid"
+        lazy-validation
+      >
         <VContainer grid-list-xl>
           <VLayout>
             <VFlex md6>
               <VSelect
+                v-model="mutableField.type"
                 label="Тип"
                 :items="fieldTypes"
-                v-model="mutableField.type"
                 :rules="[v => !!v || 'Обязательное поле']"
               />
             </VFlex>
             <VFlex md6>
               <VTextField
-                label="Имя"
                 v-model="mutableField.caption"
+                label="Имя"
                 :rules="[v => !!v || 'Обязательное поле']"
               />
             </VFlex>
           </VLayout>
         </VContainer>
-        <VFormBuilderModalRules :type="mutableField.type" :rules.sync="mutableField.value" />
+        <VFormBuilderModalRules
+          :type="mutableField.type"
+          :rules.sync="mutableField.value"
+        />
       </VForm>
     </VCardText>
 
     <VCardActions>
-      <VSpacer/>
-      <VBtn color="blue darken-1" text @click="closeDialog">Закрыть</VBtn>
-      <VBtn color="blue darken-1" text @click="submit" :disabled="!formValid">Сохранить</VBtn>
+      <VSpacer />
+      <VBtn
+        color="blue darken-1"
+        text
+        @click="closeDialog"
+      >
+        Закрыть
+      </VBtn>
+      <VBtn
+        color="blue darken-1"
+        text
+        :disabled="!formValid"
+        @click="submit"
+      >
+        Сохранить
+      </VBtn>
     </VCardActions>
   </VCard>
 </template>

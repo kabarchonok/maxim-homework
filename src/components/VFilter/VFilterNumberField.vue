@@ -1,9 +1,9 @@
 <template>
-<VTextField
-  :label="field.caption"
-  :type="field.type"
-  :rules="rules"
-/>
+  <VTextField
+    :label="field.caption"
+    :type="field.type"
+    :rules="rules"
+  />
 </template>
 
 <script lang="ts">

@@ -1,11 +1,11 @@
 <template>
-<VForm>
-  <VFilterField
-    v-for="field in fields"
-    :key="field.code"
-    :field="field"
-  />
-</VForm>
+  <VForm>
+    <VFilterField
+      v-for="field in fields"
+      :key="field.code"
+      :field="field"
+    />
+  </VForm>
 </template>
 
 <script lang="ts">

@@ -1,10 +1,10 @@
 <template>
   <VApp id="app">
-    <TheNavigation :drawer="drawer"/>
-    <TheHeader v-model="drawer"/>
+    <TheNavigation :drawer="drawer" />
+    <TheHeader v-model="drawer" />
     <VContent>
       <VContainer fluid>
-        <RouterView/>
+        <RouterView />
       </VContainer>
     </VContent>
   </VApp>

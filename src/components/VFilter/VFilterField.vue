@@ -1,5 +1,8 @@
 <template>
-  <component :is="tag" :field="field"/>
+  <component
+    :is="tag"
+    :field="field"
+  />
 </template>
 
 <script lang="ts">

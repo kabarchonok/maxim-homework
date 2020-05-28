@@ -9,28 +9,32 @@
     item-key="code"
   >
     <template v-slot:item.data-table-expand="{ item, expand, isExpanded }">
-     <VBtn v-if="item.value" icon @click="expand(isExpanded ? null : item)">
-       <VIcon>{{ isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</VIcon>
-     </VBtn>
+      <VBtn
+        v-if="item.value"
+        icon
+        @click="expand(isExpanded ? null : item)"
+      >
+        <VIcon>{{ isExpanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</VIcon>
+      </VBtn>
     </template>
 
     <template v-slot:item.type="{ item: { type } }">
-      {{ fieldTypesObj[type]}}
+      {{ fieldTypesObj[type] }}
     </template>
 
     <template v-slot:item.actions="{ item: { code } }">
       <VBtn
         icon
-        @click="editItem(code)"
         title="Редактировать"
+        @click="editItem(code)"
       >
         <VIcon>edit</VIcon>
       </VBtn>
 
       <VBtn
         icon
-        @click="removeItem(code)"
         title="Удалить"
+        @click="removeItem(code)"
       >
         <VIcon>delete</VIcon>
       </VBtn>
@@ -43,7 +47,7 @@
             v-for="(i, index) in value"
             :key="index"
           >
-            <b>{{ fieldRules[index] }}</b>: {{ i }}
+            <b>{{ fieldRuleLabels[index] }}</b>: {{ i }}
           </VFlex>
         </VLayout>
       </td>
@@ -54,7 +58,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
 import { Field } from '@/utils/types'
-import { fieldTypesObj, fieldRules } from '@/utils/fieldHelper'
+import { fieldTypesObj, fieldRuleLabels } from '@/utils/fieldHelper'
 
 @Component
 export default class VFormBuilderFields extends Vue {
@@ -81,7 +85,7 @@ export default class VFormBuilderFields extends Vue {
   expanded = []
 
   fieldTypesObj = fieldTypesObj
-  fieldRules = fieldRules
+  fieldRuleLabels = fieldRuleLabels
 }
 </script>
 

@@ -1,6 +1,9 @@
 <template>
-  <v-app-bar app dark>
-    <v-app-bar-nav-icon @click="switchDrawer"/>
+  <v-app-bar
+    app
+    dark
+  >
+    <v-app-bar-nav-icon @click="switchDrawer" />
     <v-toolbar-title>{{ title }}</v-toolbar-title>
   </v-app-bar>
 </template>

@@ -1,18 +1,21 @@
 <template>
-  <v-navigation-drawer permanent :mini-variant="drawer" app>
-
+  <v-navigation-drawer
+    permanent
+    :mini-variant="drawer"
+    app
+  >
     <v-list>
       <v-list-item
         v-for="item in items"
-        v-bind:key="item.name"
+        :key="item.name"
         :to="item.href"
         :title="item.name"
       >
         <v-list-item-icon>
-          <v-icon>{{item.icon}}</v-icon>
+          <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>{{item.name}}</v-list-item-title>
+          <v-list-item-title>{{ item.name }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
