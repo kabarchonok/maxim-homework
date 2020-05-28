@@ -17,7 +17,7 @@
     }
   },
   {
-    "code": "field4",
+    "code": "field3",
     "caption": "Логическое поле",
     "type": "bool",
     "value": {
