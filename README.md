@@ -1,29 +1,50 @@
-# maxim
+# Maxim
 
-## Project setup
+![Preview](preview.png)
+
+##[Демонстрационная страница](http://maxim-homework.surge.sh/edit#new)
+
+## Первый запуск
+
+### Установка зависимостей
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### Запуск приложения
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+## Как пользоваться
+
+На главной странице располагается форма полями, собранные через конструктор
+
+Для редактирования полей можно перейти в раздел "Редактировать структуру" через навигационное меню слева
+
+##Структура приложения
+
 ```
-yarn build
+├── src
+│   ├── components
+│   │   ├── VFilter - компонент конструктор для отображения полей
+│   │   ├── VFormBuilder - компонент для редактирования/создания/удаления полей
+│   │   ...
+│   ├── store
+│   │   ├── modules 
+│   │   │   └── form.module.js - модуль для хранение конфигурации
+│   │   ...
+│   ├── views
+│   │   ├── Edit
+│   │   └── Form
 ```
 
-### Run your unit tests
-```
-yarn test:unit
-```
+## Что не было реализованно
 
-### Lints and fixes files
-```
-yarn lint
-```
+* Загрузка собранного условия в конструктор
+* Вывод результата в формате json
+* Тесты
+* Локализация
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Минусы приложения
+* Создание уникальных ключей для полей на клиентской стороне
