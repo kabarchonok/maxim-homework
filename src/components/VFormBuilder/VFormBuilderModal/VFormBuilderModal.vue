@@ -28,7 +28,7 @@
           </VLayout>
         </VContainer>
         <VFormBuilderModalRules
-          v-if="mutableField.type"
+          v-show="mutableField.type"
           :type="mutableField.type"
           :rules.sync="mutableField.value"
         />
