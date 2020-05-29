@@ -1,6 +1,6 @@
 <template>
   <div>
-    <VCard>
+    <VCard v-if="fields.length">
       <VCardTitle>
         <VBtn
           class="primary"
@@ -18,6 +18,19 @@
         />
       </VCardText>
     </VCard>
+
+    <VEmptyState
+      v-else
+      icon="assignment"
+    >
+      <p>Похоже, поля отсутствуют</p>
+      <VBtn
+        class="primary"
+        @click="openDialog(null)"
+      >
+        Добавить новое
+      </VBtn>
+    </VEmptyState>
 
     <VDialog
       v-model="dialog.active"
@@ -38,9 +51,10 @@ import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
 import VFormBuilderFields from './VFormBuilderFields.vue'
 import VFormBuilderModal from '@/components/VFormBuilder/VFormBuilderModal/VFormBuilderModal.vue'
 import { Field } from '@/utils/types'
+import VEmptyState from '@/components/VEmptyState/VEmptyState.vue'
 
 @Component({
-  components: { VFormBuilderModal, VFormBuilderFields }
+  components: { VEmptyState, VFormBuilderModal, VFormBuilderFields }
 })
 export default class VFormBuilder extends Vue {
   @Prop({ required: true })
