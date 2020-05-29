@@ -20,7 +20,7 @@ export default class VFilterField extends Vue {
   }
 
   public rules = [
-    (value: string) => (!this.values || !this.values.like) ? true : value.includes(this.values.like) ? true : `Значение должно содержать «${this.values.like}»`,
+    (value: string) => (!this.values || !this.values.like) ? true : value && value.includes(this.values.like) ? true : `Значение должно содержать «${this.values.like}»`,
     (value: string) => (!this.values || !this.values.eq) ? true : value === this.values.eq ? true : `Значение должно быть «${this.values.eq}»`,
     (value: string) => (!this.values || !this.values.neq) ? true : value !== this.values.neq ? true : `Значение не должно быть «${this.values.neq}»`
   ]
