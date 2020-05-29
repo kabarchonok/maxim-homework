@@ -53,8 +53,13 @@ import VFormBuilderModal from '@/components/VFormBuilder/VFormBuilderModal/VForm
 import { Field } from '@/utils/types'
 import VEmptyState from '@/components/VEmptyState/VEmptyState.vue'
 
+Component.registerHooks(['mounted'])
 @Component({
-  components: { VEmptyState, VFormBuilderModal, VFormBuilderFields }
+  components: {
+    VEmptyState,
+    VFormBuilderModal,
+    VFormBuilderFields
+  }
 })
 export default class VFormBuilder extends Vue {
   @Prop({ required: true })
@@ -73,6 +78,10 @@ export default class VFormBuilder extends Vue {
   dialog = {
     active: false,
     field: {}
+  }
+
+  mounted () {
+    if (this.$route.hash === '#new') this.openDialog(null)
   }
 
   openDialog<Field> (field?: Field): void {
