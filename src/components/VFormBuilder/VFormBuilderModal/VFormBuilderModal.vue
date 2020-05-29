@@ -23,6 +23,7 @@
                 v-model="mutableField.caption"
                 label="Имя"
                 :rules="[v => !!v || 'Обязательное поле']"
+                autocomplete="off"
               />
             </VFlex>
           </VLayout>
