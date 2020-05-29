@@ -2,7 +2,9 @@
 
 ![Preview](preview.png)
 
-## [Демонстрационная страница](http://maxim-homework.surge.sh){:target="_blank"}
+
+
+## <a href="http://maxim-homework.surge.sh" target="_blank">Демонстрационная страница</a>
 
 ## Первый запуск
 
