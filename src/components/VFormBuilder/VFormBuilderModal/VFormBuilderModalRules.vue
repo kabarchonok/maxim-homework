@@ -86,7 +86,7 @@ export default class VFormBuilderModalRules extends Vue {
   @Prop()
   public type!: 'number' | 'string' | 'bool'
 
-  @PropSync('rules', { type: Object })
+  @PropSync('rules', { type: Object, default: () => ({}) })
   syncedRules!: FieldRules
 
   @Watch('type')
