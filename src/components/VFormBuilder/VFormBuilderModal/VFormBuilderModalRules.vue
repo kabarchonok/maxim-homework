@@ -59,6 +59,7 @@
       hide-default-footer
       :headers="headers"
       :items="ruleList"
+      no-data-text="Правила отсутствуют"
     >
       <template v-slot:item.actions="{ item }">
         <VBtn
