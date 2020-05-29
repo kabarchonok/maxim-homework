@@ -29,7 +29,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
   data () {
     return {
       items: [
-        { name: 'Посмотреть форму', icon: 'list_alt', href: '/form' },
+        { name: 'Посмотреть форму', icon: 'list_alt', href: '/' },
         { name: 'Редактировать структуру', icon: 'assignment', href: '/edit' }
       ]
     }
