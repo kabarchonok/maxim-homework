@@ -1,25 +1,30 @@
 [
   {
     "code": "field1",
-    "caption": "Числовое поле",
-    "type": "number",
-    "value": {
-      "qte": 5,
-      "lte": 20
-    }
+    "caption": "Имя",
+    "type": "string"
   },
   {
     "code": "field2",
-    "caption": "Текстовое поле",
-    "type": "string",
+    "type": "number",
+    "caption": "Год рождения",
     "value": {
-      "neq": "hello"
+      "qt": "1990",
+      "lt": "2020"
     }
   },
   {
     "code": "field3",
-    "caption": "Логическое поле",
+    "type": "string",
+    "caption": "Город проживания",
+    "value": {
+      "eq": "Москва"
+    }
+  },
+  {
+    "code": "field4",
     "type": "bool",
+    "caption": "Наличие водительских прав",
     "value": {
       "eq": true
     }
