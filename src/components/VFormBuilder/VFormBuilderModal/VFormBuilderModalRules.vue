@@ -13,7 +13,7 @@
             <VFlex md4>
               <VSelect
                 v-model="selectedRule.type"
-                :disabled="!type"
+                :disabled="!canAddRule"
                 :items="ruleSelect"
                 solo-inverted
                 label="Выберите правило"
@@ -24,6 +24,7 @@
               <VSelect
                 v-if="type === 'bool'"
                 v-model="selectedRule.value"
+                :disabled="!canAddRule"
                 solo-inverted
                 hide-details
                 :items="boolSelect"
@@ -31,6 +32,7 @@
               <VTextField
                 v-else
                 v-model="selectedRule.value"
+                :disabled="!canAddRule"
                 :type="type"
                 solo-inverted
                 autocomplete="off"
@@ -114,6 +116,16 @@ export default class VFormBuilderModalRules extends Vue {
 
   get isBtnDisabled () {
     return !this.selectedRule.type || !this.selectedRule.value
+  }
+
+  get canAddRule () {
+    if (this.type === 'number' && Object.keys(this.syncedRules).length <= 1) {
+      return true
+    } else if (this.type && !Object.keys(this.syncedRules).length) {
+      return true
+    }
+
+    return false
   }
 
   boolSelect = [
