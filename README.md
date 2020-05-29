@@ -2,7 +2,7 @@
 
 ![Preview](preview.png)
 
-## [Демонстрационная страница](http://maxim-homework.surge.sh/edit#new)
+## [Демонстрационная страница](http://maxim-homework.surge.sh){:target="_blank"}
 
 ## Первый запуск
 
