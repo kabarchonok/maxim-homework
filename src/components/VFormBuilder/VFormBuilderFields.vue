@@ -10,7 +10,7 @@
   >
     <template v-slot:item.data-table-expand="{ item, expand, isExpanded }">
       <VBtn
-        v-if="item.value"
+        v-if="hasRules(item)"
         icon
         @click="expand(isExpanded ? null : item)"
       >
@@ -86,6 +86,10 @@ export default class VFormBuilderFields extends Vue {
 
   fieldTypesObj = fieldTypesObj
   fieldRuleLabels = fieldRuleLabels
+
+  hasRules (item: Field) {
+    return item.value && Object.keys(item.value).length
+  }
 }
 </script>
 
