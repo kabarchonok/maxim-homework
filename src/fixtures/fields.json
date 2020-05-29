@@ -2,7 +2,8 @@
   {
     "code": "field1",
     "caption": "Имя",
-    "type": "string"
+    "type": "string",
+    "value": {}
   },
   {
     "code": "field2",
