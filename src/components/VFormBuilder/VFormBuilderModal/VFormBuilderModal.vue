@@ -1,6 +1,6 @@
 <template>
   <VCard>
-    <VCardTitle>Редактировать поле</VCardTitle>
+    <VCardTitle>{{ title }}</VCardTitle>
 
     <VCardText>
       <VForm
@@ -90,6 +90,10 @@ export default class VFormBuilderModal extends Vue {
   saveField () {
     this.isFormUpdate = true
     return this.mutableField
+  }
+
+  get title (): string {
+    return this.mutableField.code ? 'Редактировать поле' : 'Создать поле'
   }
 
   formValid = false
