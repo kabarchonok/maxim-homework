@@ -33,6 +33,7 @@
     </VEmptyState>
 
     <VDialog
+      v-if="dialog.active"
       v-model="dialog.active"
       persistent
       max-width="800px"
@@ -52,6 +53,13 @@ import VFormBuilderList from './VFormBuilderList.vue'
 import VFormBuilderModal from '@/components/VFormBuilder/VFormBuilderModal/VFormBuilderModal.vue'
 import { Field } from '@/utils/types'
 import VEmptyState from '@/components/VEmptyState/VEmptyState.vue'
+
+const INITIAL_FIELD = (): Field => ({
+  code: '',
+  caption: '',
+  type: '',
+  value: {}
+})
 
 Component.registerHooks(['mounted'])
 @Component({
@@ -75,24 +83,26 @@ export default class VFormBuilder extends Vue {
     return field
   }
 
+  initialField = INITIAL_FIELD()
+
   dialog = {
     active: false,
-    field: {}
+    field: this.initialField
   }
 
   mounted () {
     if (this.$route.hash === '#new') this.openDialog(null)
   }
 
-  openDialog<Field> (field?: Field): void {
-    if (field) this.dialog.field = field
+  openDialog (field?: Field | null): void {
+    this.dialog.field = field || this.initialField
 
     this.dialog.active = true
   }
 
   closeDialog (): void {
     this.dialog.active = false
-    this.dialog.field = {}
+    this.dialog.field = this.initialField
   }
 
   editItem (code: string): void {
