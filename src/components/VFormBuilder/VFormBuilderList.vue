@@ -61,7 +61,7 @@ import { Field } from '@/utils/types'
 import { fieldTypesObj, fieldRuleLabels } from '@/utils/fieldHelper'
 
 @Component
-export default class VFormBuilderFields extends Vue {
+export default class VFormBuilderList extends Vue {
   @Prop({ required: true })
   fields!: Field[]
 
@@ -92,7 +92,3 @@ export default class VFormBuilderFields extends Vue {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

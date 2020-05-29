@@ -11,7 +11,7 @@
       </VCardTitle>
 
       <VCardText>
-        <VFormBuilderFields
+        <VFormBuilderList
           :fields="fields"
           @edit-item="editItem"
           @remove-item="removeField"
@@ -48,7 +48,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
-import VFormBuilderFields from './VFormBuilderFields.vue'
+import VFormBuilderList from './VFormBuilderList.vue'
 import VFormBuilderModal from '@/components/VFormBuilder/VFormBuilderModal/VFormBuilderModal.vue'
 import { Field } from '@/utils/types'
 import VEmptyState from '@/components/VEmptyState/VEmptyState.vue'
@@ -58,7 +58,7 @@ Component.registerHooks(['mounted'])
   components: {
     VEmptyState,
     VFormBuilderModal,
-    VFormBuilderFields
+    VFormBuilderList
   }
 })
 export default class VFormBuilder extends Vue {
